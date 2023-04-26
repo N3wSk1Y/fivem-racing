@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@citizenfx/client": "^2.0.6418-1",
+    "@citizenfx/server": "^2.0.6418-1",
+    "fs": "^0.0.1-security"
+  },
+  "name": "racing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^18.16.1"
+  }
+}
