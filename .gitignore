@@ -1,5 +1,5 @@
 # Project exclude paths
 /node_modules/
-/src/commands/spawncar.js
-/src/CommandsHandler.js
+/src/commands/car.js
+/src/CommandsRegistrator.js
 /src/ICommand.js

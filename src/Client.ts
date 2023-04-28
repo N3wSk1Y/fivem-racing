@@ -1,8 +1,6 @@
-import {CommandsRegistrator} from "./CommandsHandler";
-
-abstract class Client {
+class Client {
     public static Main(): void {
-        CommandsRegistrator.RegisterCommandsInDirectory("./commands/")
+
     }
 }
 

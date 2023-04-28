@@ -4,6 +4,9 @@
     "@citizenfx/server": "^2.0.6418-1",
     "fs": "^0.0.1-security"
   },
+  "scripts": {
+    "build": "tsc"
+  },
   "name": "racing",
   "version": "1.0.0",
   "main": "index.js",
