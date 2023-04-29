@@ -1,19 +1,18 @@
 {
   "dependencies": {
-    "@citizenfx/client": "^2.0.6418-1",
-    "@citizenfx/server": "^2.0.6418-1",
-    "fs": "^0.0.1-security"
+    "@citizenfx/server": "^2.0.6418-1"
   },
   "scripts": {
-    "build": "tsc"
+    "prettier-format": "prettier --config .prettierrc.json src/*.ts --write",
+    "build": "tsc && npm run prettier-format"
   },
   "name": "racing",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "",
+  "author": "N3wSk1Y",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^18.16.1"
+    "@types/node": "^18.16.1",
+    "prettier": "^2.8.8"
   }
 }

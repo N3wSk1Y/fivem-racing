@@ -5,7 +5,6 @@ author 'N3wSk1Y'
 description 'Racing'
 version '1.0.0'
 
-client_script 'src/Client.js'
 server_script 'src/Server.js'
 
 dependency "yarn"

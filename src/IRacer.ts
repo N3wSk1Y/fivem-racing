@@ -1,10 +1,10 @@
 interface IRacer {
-    player: number,
-    isHost: boolean,
-    carHash: number,
+    player: number;
+    isHost: boolean;
+    carHash: number;
     beforeStartPosition: {
-        x: number,
-        y: number,
-        z: number
-    }
+        x: number;
+        y: number;
+        z: number;
+    };
 }
