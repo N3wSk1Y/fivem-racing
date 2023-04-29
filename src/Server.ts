@@ -341,18 +341,6 @@ class Race {
 abstract class Server {
     public static Main(): void {
         Race.RegisterCommands();
-
-        RegisterCommand(
-            "coords",
-            (source: string) => {
-                const coords = GetEntityCoords(GetPlayerPed(source));
-                Tools.SendMessageToPlayer(
-                    parseInt(source),
-                    `X: ${coords[0]}, Y: ${coords[1]}, Z: ${coords[2]}`
-                );
-            },
-            false
-        );
     }
 }
 
