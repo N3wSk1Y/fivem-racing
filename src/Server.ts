@@ -85,7 +85,7 @@ class Race {
             z: 54.605
         }
     ];
-    private static readonly maxPlayersInRace = 16;
+    private static readonly maxPlayersInRace: number = 16;
     private static readonly randomRangeRadius: number = 50;
 
 
