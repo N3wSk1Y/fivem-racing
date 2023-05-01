@@ -86,6 +86,8 @@ class Race {
         }
     ];
     private static readonly maxPlayersInRace = 16;
+    private static readonly randomRangeRadius: number = 50;
+
 
     private readonly id: number;
     private readonly track: ITrack;
@@ -119,8 +121,8 @@ class Race {
         const playerPosition = Tools.GetPlayerPosition(player);
         const car = CreateVehicle(
             this.carType,
-            Tools.RangeRandom(this.track.x - 50, this.track.x + 50),
-            Tools.RangeRandom(this.track.y - 50, this.track.y + 50),
+            Tools.RangeRandom(this.track.x - Race.randomRangeRadius, this.track.x + Race.randomRangeRadius),
+            Tools.RangeRandom(this.track.y - Race.randomRangeRadius, this.track.y + Race.randomRangeRadius),
             this.track.z,
             0,
             true,
