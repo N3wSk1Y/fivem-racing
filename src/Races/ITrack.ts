@@ -1,4 +1,4 @@
-interface ITrack {
+export interface ITrack {
     name: string;
     x: number;
     y: number;

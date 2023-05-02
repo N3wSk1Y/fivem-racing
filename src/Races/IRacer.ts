@@ -1,4 +1,4 @@
-interface IRacer {
+export interface IRacer {
     player: number;
     isHost: boolean;
     carHash: number;
