@@ -4,13 +4,19 @@ import { CommandsRegistrator } from "../Commands/CommandsRegistrator";
 import { LocalUserStorage } from "../Utilities/LocalUserStorage";
 import { EntityUtilities } from "../Utilities/EntityUtilities";
 import { PlayerUtilities } from "../Utilities/PlayerUtilities";
+import { DimensionsManager } from "../Dimensions/DimensionsManager";
+import { Dimension } from "../Dimensions/Dimension";
 
 export class RacingManager {
     private races: Race[] = [];
-    private tracksManager: TracksManager;
+    private readonly tracksManager: TracksManager;
 
     public constructor(tracksManager: TracksManager) {
         this.tracksManager = tracksManager;
+    }
+
+    private AddRace(race: Race): void {
+        this.races.push(race);
     }
 
     private DoesTakePartInAnyRace(player: number): boolean {
@@ -52,14 +58,15 @@ export class RacingManager {
             handler(source: string, args: string[]): void {
                 if (racingManager.DoesTakePartInAnyRace(parseInt(source)))
                     throw new Error("Игрок уже участвует в гонке");
-                racingManager.races.push(
+                racingManager.AddRace(
                     new Race(
                         racingManager.races.length,
                         racingManager.tracksManager.Tracks.filter((el) => el.name === args[0])[0],
                         args[1],
                         parseInt(args[2]),
                         parseInt(args[3]),
-                        parseInt(source)
+                        parseInt(source),
+                        DimensionsManager.AddDimension(new Dimension(DimensionsManager.dimensions.length))
                     )
                 );
             }

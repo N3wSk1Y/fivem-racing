@@ -5,6 +5,8 @@ import { IRacer } from "./IRacer";
 import { VehiclesUtilities } from "../Utilities/VehiclesUtilities";
 import { PlayerUtilities } from "../Utilities/PlayerUtilities";
 import { MathsUtilities } from "../Utilities/MathsUtilities";
+import { Dimension } from "../Dimensions/Dimension";
+import { DimensionsManager } from "../Dimensions/DimensionsManager";
 
 export class Race {
     public readonly id: number;
@@ -13,6 +15,7 @@ export class Race {
     public readonly carsColor: number;
     public readonly maxPlayers: number;
     public readonly raceTime: number = 20000;
+    public readonly raceDimension: Dimension;
 
     public hostPlayer: number;
     public racers: IRacer[] = [];
@@ -24,7 +27,8 @@ export class Race {
         carType: string,
         carsColor: number,
         maxPlayers: number,
-        hostPlayer: number
+        hostPlayer: number,
+        dimension: Dimension
     ) {
         this.id = id;
         this.track = track;
@@ -32,15 +36,18 @@ export class Race {
         this.carsColor = carsColor;
         this.maxPlayers = maxPlayers;
         this.hostPlayer = hostPlayer;
+        this.raceDimension = dimension;
 
         this.AddRacer(hostPlayer, true);
     }
 
     public AddRacer(player: number, isHost: boolean): void {
+        this.raceDimension.SetPlayerDimensionTo(player);
+
         const playerPosition = EntityUtilities.GetEntityPosition(player);
         const car = VehiclesUtilities.CreateVehicle(this.carType, {
             x: MathsUtilities.RangeRandom(this.track.x - 50, this.track.x + 50),
-            y:  MathsUtilities.RangeRandom(this.track.y - 50, this.track.y + 50),
+            y: MathsUtilities.RangeRandom(this.track.y - 50, this.track.y + 50),
             z: this.track.z
         })
 
@@ -57,7 +64,7 @@ export class Race {
                 x: playerPosition.x,
                 y: playerPosition.y,
                 z: playerPosition.z
-            }
+            },
         });
 
         LocalUserStorage.SetData(player, {
@@ -82,6 +89,7 @@ export class Race {
         }
 
         DeleteEntity(racer.carHash);
+        this.raceDimension.SetPlayerDimensionToBasic(player);
         EntityUtilities.SetEntityPosition(
             player.toString(),
             racer.beforeStartPosition.x,

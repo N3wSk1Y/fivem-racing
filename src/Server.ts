@@ -1,13 +1,14 @@
 import "@citizenfx/server";
 import { RacingManager } from "./Racing/RacingManager";
 import { TracksManager } from "./Racing/TracksManager";
+import { DimensionsManager } from "./Dimensions/DimensionsManager";
 
 class Server {
     public static Main(): void {
-        const raceManager = new RacingManager(
+        const racingManager = new RacingManager(
             new TracksManager(require("./Racing/tracks.json"))
         );
-        raceManager.RegisterCommands();
+        racingManager.RegisterCommands();
     }
 }
 
