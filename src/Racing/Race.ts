@@ -38,15 +38,11 @@ export class Race {
 
     public AddRacer(player: number, isHost: boolean): void {
         const playerPosition = EntityUtilities.GetEntityPosition(player);
-        const car = CreateVehicle(
-            this.carType,
-            MathsUtilities.RangeRandom(this.track.x - 50, this.track.x + 50),
-            MathsUtilities.RangeRandom(this.track.y - 50, this.track.y + 50),
-            this.track.z,
-            0,
-            true,
-            true
-        );
+        const car = VehiclesUtilities.CreateVehicle(this.carType, {
+            x: MathsUtilities.RangeRandom(this.track.x - 50, this.track.x + 50),
+            y:  MathsUtilities.RangeRandom(this.track.y - 50, this.track.y + 50),
+            z: this.track.z
+        })
 
         SetVehicleColours(car, this.carsColor, this.carsColor);
         SetPedIntoVehicle(player, car, 0);
